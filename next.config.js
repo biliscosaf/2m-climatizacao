@@ -2,11 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  // Windows 14.0.0 bug workaround
-  generateBuildId: async () => {
-    return 'build-' + Date.now()
-  },
-
   // Ignorar erros de TypeScript e ESLint durante build
   typescript: {
     ignoreBuildErrors: true,
