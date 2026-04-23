@@ -13,7 +13,8 @@
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "tsx prisma/seed.ts",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.4.0",
@@ -30,7 +31,7 @@
     "framer-motion": "^11.2.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.379.0",
-    "next": "^14.1.0",
+    "next": "14.0.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "react-hook-form": "^7.51.0",
@@ -50,7 +51,7 @@
     "@typescript-eslint/parser": "^7.13.0",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.0",
+    "eslint-config-next": "14.0.0",
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "postcss": "^8.4.38",
     "prettier": "^3.3.0",

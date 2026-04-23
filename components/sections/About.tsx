@@ -1,5 +1,7 @@
+"use client"
+
 // Seção About — história da empresa + foto do técnico + diferenciais
-// Server Component — layout responsivo 2 colunas (desktop) / 1 coluna (mobile)
+// Client Component — usa Framer Motion para animações
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"

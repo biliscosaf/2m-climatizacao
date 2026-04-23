@@ -1,5 +1,7 @@
+"use client"
+
 // Seção de depoimentos — 3+ cards com foto, nome, localização e stars
-// Server Component — renderizado estaticamente
+// Client Component — usa Framer Motion para animações
 // ⚠️ PLACEHOLDER — depoimentos fictícios para desenvolvimento
 
 import { motion } from "framer-motion"

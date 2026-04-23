@@ -11,7 +11,7 @@ import { Progress } from "@/components/ui/progress"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useQuizState } from "@/lib/hooks/useQuizState"
 import { QUIZ_QUESTIONS, QUIZ_PROGRESS_LABELS, QUIZ_CTA_LABELS } from "@/content/quiz"
-import { areas } from "@/config/areas"
+import { BAIRROS_QUIZ_COM_OUTRO as areas } from "@/config/areas"
 import { ResultScreen } from "./ResultScreen"
 
 // Variantes de animação
