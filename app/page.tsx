@@ -24,18 +24,16 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-12">
-      <h1 className="text-4xl font-bold">Bem-vindo ao Quiz 2M Climatização</h1>
-      <p className="mt-4 text-gray-600">
-        Servidordando rodando corretamente! Os componentes complexos foram temporariamente desativados para debug.
-      </p>
-
-      {/* SEÇÃO 2 — QUIZ INTERATIVO */}
-      <section id="quiz" aria-label="Quiz de diagnóstico" className="bg-gray-50 py-12 md:py-16 mt-8">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 2xl:px-12">
-          <Quiz />
-        </div>
-      </section>
-    </main>
+    <>
+      <Hero />
+      <Quiz />
+      <Services />
+      <BeforeAfter />
+      <Testimonials />
+      <About />
+      <CoverageMap />
+      <FAQ />
+      <Cta />
+    </>
   )
 }
