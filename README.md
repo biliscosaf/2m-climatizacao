@@ -813,3 +813,4 @@ Veja [CHANGELOG.md](./CHANGELOG.md) para histórico de versões e roadmap.
 **Desenvolvido por Squad de 12 Agentes — Anthropic Claude Code**
 
 Perguntas? Abra issue no GitHub ou consulte documentação em `/docs`.
+
