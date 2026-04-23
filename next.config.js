@@ -32,7 +32,7 @@ const nextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net",
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: blob: https://*.openstreetmap.org https://*.tile.openstreetmap.org",
+              "img-src 'self' data: blob: https://*.unsplash.com https://*.openstreetmap.org https://*.tile.openstreetmap.org",
               "font-src 'self'",
               "connect-src 'self' https://graph.facebook.com https://vitals.vercel-insights.com",
               "frame-ancestors 'none'",
@@ -45,7 +45,12 @@ const nextConfig = {
 
   images: {
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
   },
 }
 
