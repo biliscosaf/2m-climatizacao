@@ -1,0 +1,58 @@
+# CI — Soluções 2M Climatização
+# Executa em todo PR para main: lint, typecheck e build
+# Falha o PR se qualquer etapa falhar
+
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: "20"
+  # Database de teste (SQLite em memória para CI)
+  DATABASE_URL: "file:./ci-test.db"
+
+jobs:
+  quality:
+    name: Lint, Typecheck & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      - name: TypeScript check
+        run: npm run typecheck
+
+      - name: ESLint
+        run: npx next lint
+
+      - name: Prettier check
+        run: npx prettier --check .
+
+      - name: Build
+        run: npm run build
+        env:
+          # Variáveis mínimas para build passar
+          NEXT_PUBLIC_SITE_URL: "https://solucoes2m.com.br"
+          NEXT_PUBLIC_FB_PIXEL_ID: "PIXEL_ID_CI"
+          WHATSAPP_NUMBER: "5571999999999"
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
+        continue-on-error: true # Aviso, não falha o CI por ora (devops-engineer configura threshold)

@@ -1,0 +1,41 @@
+# Robots.txt — Diretrizes para crawlers
+# Última atualização: 2026-04-23
+
+User-agent: *
+Allow: /
+Allow: /politica-de-privacidade
+Allow: /termos-de-uso
+Disallow: /admin/
+Disallow: /api/
+Disallow: /.env*
+Disallow: /node_modules/
+Disallow: /.*
+
+# Sitemap
+Sitemap: https://www.solucoes2m.com.br/sitemap.xml
+
+# Crawl delay (opcional — respeita velocidade padrão do Vercel)
+# Crawl-delay: 1
+
+# Específico para Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+# Específico para Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Bloquear bots maliciosos
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DotBot
+Disallow: /
+
+# User-agents de segurança (permitir)
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: baiduspider
+Allow: /

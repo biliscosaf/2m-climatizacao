@@ -1,0 +1,98 @@
+# Project build/dependencies
+node_modules/
+.next/
+.turbo/
+dist/
+out/
+build/
+coverage/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Dev
+tsconfig.tsbuildinfo
+.nyc_output/
+
+# Home directory system files (ignore everything except project files)
+AppData/
+OneDrive/
+Desktop/
+Documents/
+Downloads/
+Music/
+Pictures/
+Videos/
+Saved Games/
+Searches/
+Contacts/
+Links/
+Local Sites/
+Favorites/
+3D Objects/
+Configurações Locais/
+Cookies/
+Dados de Aplicativos/
+Menu Iniciar/
+Meus Documentos/
+Modelos/
+Recent/
+SendTo/
+Ambiente de Impressão/
+Ambiente de Rede/
+.android/
+.bash_history
+.config/
+.copilot/
+.docker/
+.gologin/
+.ollama/
+.python_history
+.codegpt/
+.Ld2VirtualBox/
+.BigNox/
+*.ini
+*.dat
+*.blf
+*.TxR.*
+*.regtrans-ms
+NTUSER.DAT*
+ntuser.*
+dyad-apps/
+trendnow-brasil/
+trilha-ia-dashboard/
+trilha-ia/
+usb_driver/
+vmlogs/
+*.md
+!README.md
+!CHANGELOG.md
+!CONTRIBUTING.md
+*.py
+*.html
+analyze_products.json
+products_analysis.json
+test-apis.sh
+test_apis.py
+Soundly Data/
+WPS Cloud Files/
+Apple/
+AMD_*.txt
+TrendNow_*.md
+-1.14-windows.xml
+.claude/
+.gitconfig

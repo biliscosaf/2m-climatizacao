@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Estilos globais — Soluções 2M Climatização
+ * TODO: ui-ux-designer adiciona variáveis CSS de design system aqui
+ */
+
+@layer base {
+  :root {
+    /* Variáveis de cores — PLACEHOLDER, ui-ux-designer define */
+    --color-brand-primary: #2563eb;
+    --color-brand-accent: #f97316;
+    --color-text-primary: #111827;
+    --color-text-secondary: #6b7280;
+    --color-background: #ffffff;
+
+    /* Tipografia */
+    --font-sans: "Inter", system-ui, sans-serif;
+    --font-heading: "Inter", system-ui, sans-serif;
+  }
+
+  /* Reset de focus — WCAG AA: focus sempre visível */
+  *:focus-visible {
+    outline: 2px solid var(--color-brand-primary);
+    outline-offset: 2px;
+  }
+
+  /* Smooth scroll para âncoras internas */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Touch targets mínimos de 44px (briefing) */
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

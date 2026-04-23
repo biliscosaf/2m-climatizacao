@@ -1,0 +1,82 @@
+// =============================================================
+// SOLUÇÕES 2M CLIMATIZAÇÃO — Prisma Schema
+// =============================================================
+// Em desenvolvimento: SQLite (DATABASE_URL=file:./dev.db)
+// Em produção:        Vercel Postgres (DATABASE_URL=postgresql://...)
+//
+// Para trocar de SQLite para Postgres em produção:
+//   1. Mude provider de "sqlite" para "postgresql"
+//   2. Configure DATABASE_URL no Vercel com a string do Vercel Postgres
+//   3. Execute: npx prisma migrate deploy
+// =============================================================
+
+datasource db {
+  // ATENÇÃO: Em produção, o devops-engineer muda para "postgresql"
+  // e configura o DATABASE_URL no Vercel Dashboard
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// =============================================================
+// Lead — Representa um potencial cliente que completou o quiz
+// =============================================================
+model Lead {
+  id          String   @id @default(cuid())
+
+  // Dados pessoais (coleta obrigatória — base legal: consentimento LGPD)
+  nome        String
+  whatsapp    String   // Apenas dígitos: 5571999999999 (sem máscara)
+
+  // Respostas do quiz (5 perguntas)
+  problema    String   // Q1: ex: "cheiro-ruim", "nao-resfria", "instalacao", "manutencao"
+  local       String   // Q2: ex: "quarto", "sala", "cozinha", "escritorio", "outro"
+  equipamento String   // Q3: ex: "nao-sei", "9000", "12000", "18000", "24000+"
+  urgencia    String   // Q4: ex: "hoje", "esta-semana", "duas-semanas", "pesquisando"
+  bairro      String   // Q5: ex: "Barra", "Pituba", "Cajazeiras", "Lauro de Freitas"
+
+  // Rastreamento de conversão
+  convertido  Boolean  @default(false)  // true = clicou no link WhatsApp após preencher dados
+
+  // UTM parameters para rastreamento de campanha Facebook Ads
+  utmSource   String?  // ex: "facebook"
+  utmMedium   String?  // ex: "cpc"
+  utmCampaign String?  // ex: "ar-condicionado-salvador"
+  utmContent  String?  // ex: "quiz-v1"
+
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Índices para queries frequentes (relatórios, analytics)
+  @@index([createdAt])
+  @@index([convertido])
+  @@index([bairro])
+  @@index([problema])
+}
+
+// =============================================================
+// QuizProgress — Rastreia abandono de leads no meio do quiz
+// Permite análise de qual etapa tem maior abandono
+// =============================================================
+model QuizProgress {
+  id        String   @id @default(cuid())
+  session   String   @unique  // UUID gerado no client, identifica o visitante anonimamente
+
+  // Qual pergunta o usuário está / abandonou (1-5)
+  // 6 = chegou na tela de resultado (completou o quiz)
+  pergunta  Int
+
+  // Respostas parciais em JSON
+  // Exemplo: { "q1": "cheiro-ruim", "q2": "quarto", "q3": "9000" }
+  respostas String   // SQLite não suporta Json nativo — armazenado como string JSON
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([createdAt])
+  @@index([pergunta])
+}
