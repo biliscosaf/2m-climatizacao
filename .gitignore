@@ -82,6 +82,8 @@ vmlogs/
 !README.md
 !CHANGELOG.md
 !CONTRIBUTING.md
+!docs/**/*.md
+!CLAUDE.md
 *.py
 *.html
 analyze_products.json
@@ -96,3 +98,5 @@ TrendNow_*.md
 -1.14-windows.xml
 .claude/
 .gitconfig
+
+.vercel
