@@ -12,6 +12,7 @@ export interface Testimonial {
   rating: number    // 1-5 estrelas
   texto: string
   avatarInitials: string  // Iniciais para avatar gerado (sem foto real)
+  avatar?: string   // URL da imagem do avatar
   isPlaceholder: true     // Flag obrigatória — nunca remover sem substituir por real
 }
 
@@ -26,6 +27,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "Excelente serviço! O técnico chegou no horário combinado, explicou tudo que fazia " +
       "e o ar ficou como novo. Recomendo demais para quem mora em Salvador.",
     avatarInitials: "MA",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&q=80",
     isPlaceholder: true,
   },
   {
@@ -38,6 +40,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "Instalaram meu ar-condicionado novo com muito cuidado e limpeza. " +
       "Preço justo e acabamento perfeito. Já indiquei para os vizinhos.",
     avatarInitials: "CE",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&q=80",
     isPlaceholder: true,
   },
   {
@@ -50,6 +53,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "Meu ar parou em pleno verão de Salvador. Chamei a 2M e o técnico veio no mesmo dia. " +
       "Resolveu rápido e com garantia. Atendimento top!",
     avatarInitials: "JP",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&q=80",
     isPlaceholder: true,
   },
 ]

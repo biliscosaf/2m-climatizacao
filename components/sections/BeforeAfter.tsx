@@ -6,6 +6,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export function BeforeAfter() {
   const [sliderPosition, setSliderPosition] = useState(50)
@@ -63,35 +64,31 @@ export function BeforeAfter() {
             onTouchMove={handleMove}
           >
             {/* Imagem ANTES */}
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-              <div className="text-center">
-                <svg
-                  className="mx-auto h-24 w-24 text-gray-600"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 4C6.48 4 2 7.13 2 11c0 2.29 1.61 4.3 4 5.3V20c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-3h4v3c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-3.7c2.39-1 4-3.01 4-5.3 0-3.87-4.48-7-10-7zm0 11c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" />
-                </svg>
-                <p className="mt-4 text-lg font-semibold text-gray-700">Antes</p>
-                <p className="text-sm text-gray-600">Equipamento sujo ou danificado</p>
+            <div className="absolute inset-0">
+              <Image
+                src="https://images.unsplash.com/photo-1573919502519-69613ad0cf9d?w=800&h=450&fit=crop&q=80"
+                alt="Ar-condicionado sujo antes da limpeza"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute bottom-4 left-4 rounded-lg bg-black/50 px-3 py-2 backdrop-blur-sm">
+                <p className="text-sm font-semibold text-white">Antes — Sujo</p>
               </div>
             </div>
 
             {/* Imagem DEPOIS — sobreposto */}
             <div
-              className="absolute inset-0 overflow-hidden bg-gradient-to-br from-emerald-300 to-sky-300 flex items-center justify-center"
+              className="absolute inset-0 overflow-hidden"
               style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
             >
-              <div className="text-center">
-                <svg
-                  className="mx-auto h-24 w-24 text-blue-600"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                </svg>
-                <p className="mt-4 text-lg font-semibold text-gray-700">Depois</p>
-                <p className="text-sm text-gray-600">Limpo, funcionando e eficiente</p>
+              <Image
+                src="https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=800&h=450&fit=crop&q=80"
+                alt="Ar-condicionado limpo após manutenção"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute bottom-4 left-4 rounded-lg bg-green-600/80 px-3 py-2 backdrop-blur-sm">
+                <p className="text-sm font-semibold text-white">Depois — Limpo</p>
               </div>
             </div>
 
@@ -127,21 +124,17 @@ export function BeforeAfter() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="overflow-hidden rounded-2xl bg-gray-300"
+              className="relative overflow-hidden rounded-2xl"
               style={{ aspectRatio: "16/9" }}
             >
-              <div className="flex h-full items-center justify-center">
-                <div className="text-center">
-                  <svg
-                    className="mx-auto h-20 w-20 text-gray-600"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 4C6.48 4 2 7.13 2 11c0 2.29 1.61 4.3 4 5.3V20c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-3h4v3c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-3.7c2.39-1 4-3.01 4-5.3 0-3.87-4.48-7-10-7zm0 11c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" />
-                  </svg>
-                  <p className="mt-3 text-lg font-semibold text-gray-700">Antes</p>
-                  <p className="text-sm text-gray-600">Equipamento sujo</p>
-                </div>
+              <Image
+                src="https://images.unsplash.com/photo-1573919502519-69613ad0cf9d?w=400&h=225&fit=crop&q=80"
+                alt="Antes da limpeza"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute bottom-3 left-3 rounded-lg bg-black/50 px-2 py-1 backdrop-blur-sm">
+                <p className="text-xs font-semibold text-white">Antes — Sujo</p>
               </div>
             </motion.div>
 
@@ -151,21 +144,17 @@ export function BeforeAfter() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="overflow-hidden rounded-2xl bg-emerald-200"
+              className="relative overflow-hidden rounded-2xl"
               style={{ aspectRatio: "16/9" }}
             >
-              <div className="flex h-full items-center justify-center">
-                <div className="text-center">
-                  <svg
-                    className="mx-auto h-20 w-20 text-blue-600"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                  </svg>
-                  <p className="mt-3 text-lg font-semibold text-gray-700">Depois</p>
-                  <p className="text-sm text-gray-600">Limpo e eficiente</p>
-                </div>
+              <Image
+                src="https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=400&h=225&fit=crop&q=80"
+                alt="Depois da limpeza"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute bottom-3 left-3 rounded-lg bg-green-600/80 px-2 py-1 backdrop-blur-sm">
+                <p className="text-xs font-semibold text-white">Depois — Limpo</p>
               </div>
             </motion.div>
           </div>

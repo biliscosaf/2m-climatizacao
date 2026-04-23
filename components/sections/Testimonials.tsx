@@ -7,6 +7,7 @@
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Star } from "lucide-react"
+import Image from "next/image"
 import { TESTIMONIALS } from "@/content/testimonials"
 
 const containerVariants = {
@@ -70,11 +71,14 @@ export function Testimonials() {
                   {/* Avatar + Nome + Localização */}
                   <CardHeader className="p-0 pb-4">
                     <div className="flex items-center gap-4">
-                      {/* Avatar gerado com iniciais */}
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-sky-100 ring-2 ring-sky-500 ring-offset-2">
-                        <span className="text-sm font-bold text-sky-700">
-                          {testimonial.avatarInitials}
-                        </span>
+                      {/* Avatar com imagem real */}
+                      <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full ring-2 ring-sky-500 ring-offset-2">
+                        <Image
+                          src={testimonial.avatar || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&q=80"}
+                          alt={testimonial.nome}
+                          fill
+                          className="object-cover"
+                        />
                       </div>
 
                       {/* Nome + Bairro */}

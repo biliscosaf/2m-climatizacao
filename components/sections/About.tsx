@@ -6,6 +6,7 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
+import Image from "next/image"
 
 const contentVariants = {
   hidden: { opacity: 0, x: -30 },
@@ -96,23 +97,21 @@ export function About() {
             </div>
           </motion.div>
 
-          {/* Coluna direita — foto do técnico (placeholder) */}
+          {/* Coluna direita — foto do técnico */}
           <motion.div
             className="flex justify-center"
             variants={imageVariants}
           >
             <div className="relative w-full max-w-md">
-              {/* Imagem placeholder */}
-              <div className="aspect-square overflow-hidden rounded-3xl bg-gradient-to-br from-sky-200 to-sky-100 shadow-xl">
-                <div className="flex h-full items-center justify-center">
-                  <svg
-                    className="h-40 w-40 text-sky-400"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                  </svg>
-                </div>
+              {/* Imagem real */}
+              <div className="aspect-square overflow-hidden rounded-3xl shadow-xl">
+                <Image
+                  src="https://images.unsplash.com/photo-1559056199-641a0ac8b3f4?w=600&h=600&fit=crop&q=80"
+                  alt="Técnico especializado em ar-condicionado"
+                  width={400}
+                  height={400}
+                  className="h-full w-full object-cover"
+                />
               </div>
 
               {/* Decoração — badge de informação */}
