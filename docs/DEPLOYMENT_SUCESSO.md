@@ -147,6 +147,12 @@ O projeto está 100% funcional, deployado em produção e aguardando que o clien
 
 ---
 
+## ✅ Vercel Rebuild Trigger — 2026-04-23
+
+Postcss configuration corrigida no commit `0fe3707` para garantir que Tailwind CSS seja compilado corretamente durante o build no Vercel. Este commit force a reconstrução.
+
+---
+
 **Desenvolvido com:** Next.js 14 + Vercel + TypeScript + Tailwind + Prisma  
 **Entrega:** 2026-04-23  
 **Commits:** 51+  
