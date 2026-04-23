@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 // GET /api/leads — Retorna estatísticas agregadas de leads (zero PII exposta)
 // Rate-limited: 5 requisições por IP por hora
 // Dados individuais requerem autenticação (implementado em v2)

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 // POST /api/quiz/progress — Salva progresso parcial do quiz (rastreamento de abandono)
 // Usado para análise de qual etapa tem maior abandono
 // Rate limiting: máximo 50 requisições por IP por hora

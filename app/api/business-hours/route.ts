@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 // GET /api/business-hours — Retorna se o negócio está aberto agora
 // Usa fuso horário de Salvador-BA (America/Bahia)
 // Sem autenticação — dado público

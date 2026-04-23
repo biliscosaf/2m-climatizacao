@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 // GET /api/quiz/stats — Retorna estatísticas de abandono do quiz
 // Útil para análise de UX e taxa de conversão
 // Em produção, este endpoint deve ter autenticação (v2 — não está no MUST desta iteração)

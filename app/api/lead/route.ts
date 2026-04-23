@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 // POST /api/lead — Salva lead no banco de dados após conclusão do quiz
 // Dispara notificação por email (Resend) e evento na Conversions API (Facebook)
 // Rate limiting: máximo 10 requisições por IP por hora (implementado pelo backend-developer)

@@ -2,11 +2,9 @@
 // e na API GET /api/business-hours
 // Horário padrão: Seg–Sáb 08:00–18:00, Dom fechado (PLACEHOLDER — cliente confirma)
 
-// Dias da semana: 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
-const BUSINESS_DAYS = {
-  SUNDAY: 0,
-  SATURDAY: 6,
-} as const
+// Dias da semana: 0 = Domingo, 1 = Segunda, ..., 6 = Sábado (não usados, mas deixados como referência)
+// const SUNDAY = 0
+// const SATURDAY = 6
 
 const OPENING_HOUR = 8  // 08:00
 const CLOSING_HOUR = 18 // 18:00
@@ -29,44 +27,39 @@ export interface BusinessHoursStatus {
 export function getBusinessHoursStatus(): BusinessHoursStatus {
   const now = new Date()
 
-  // Obtém hora e dia da semana no fuso de Salvador
+  // Converter para fuso horário de Salvador usando Intl API
   const formatter = new Intl.DateTimeFormat("pt-BR", {
     timeZone: TIMEZONE,
-    hour: "numeric",
-    minute: "numeric",
-    weekday: "short",
+    weekday: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
     hour12: false,
   })
 
   const parts = formatter.formatToParts(now)
-  const hourPart = parts.find((p) => p.type === "hour")
-  const minutePart = parts.find((p) => p.type === "minute")
+  const weekday = parseInt(parts.find((p) => p.type === "weekday")?.value || "0", 10)
+  const hour = parseInt(parts.find((p) => p.type === "hour")?.value || "0", 10)
+  const minute = parseInt(parts.find((p) => p.type === "minute")?.value || "0", 10)
 
-  const currentHour = parseInt(hourPart?.value ?? "0", 10)
-  const currentMinute = parseInt(minutePart?.value ?? "0", 10)
-  const dayOfWeek = now.toLocaleDateString("pt-BR", {
-    timeZone: TIMEZONE,
-    weekday: "short",
-  })
+  // Aberto: Seg-Sáb (1-6) entre 08:00 e 18:00; Fechado: Dom (0)
+  const isOpen = weekday !== 0 && (hour > OPENING_HOUR || (hour === OPENING_HOUR && minute >= 0)) && hour < CLOSING_HOUR
 
-  // Domingo = fechado
-  const isSunday = dayOfWeek.toLowerCase().startsWith("dom")
+  const openingTime = `${String(OPENING_HOUR).padStart(2, "0")}:00`
+  const closingTime = `${String(CLOSING_HOUR).padStart(2, "0")}:00`
 
-  // Verifica se está dentro do horário comercial
-  const isWithinHours =
-    (currentHour > OPENING_HOUR ||
-      (currentHour === OPENING_HOUR && currentMinute >= 0)) &&
-    currentHour < CLOSING_HOUR
-
-  const isOpen = !isSunday && isWithinHours
+  const message = isOpen
+    ? "Aberto agora"
+    : weekday === 0
+      ? "Fechado no domingo"
+      : hour >= CLOSING_HOUR
+        ? `Abre amanhã às ${openingTime}`
+        : `Abre às ${openingTime}`
 
   return {
     isOpen,
-    message: isOpen
-      ? "Aberto agora — respondemos em minutos"
-      : `Fechado agora — abrimos às ${OPENING_HOUR}h`,
-    openingTime: `${String(OPENING_HOUR).padStart(2, "0")}:00`,
-    closingTime: `${String(CLOSING_HOUR).padStart(2, "0")}:00`,
+    message,
+    openingTime,
+    closingTime,
     timezone: TIMEZONE,
   }
 }
