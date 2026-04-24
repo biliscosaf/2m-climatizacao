@@ -5,7 +5,7 @@
 
 import type { Metadata } from "next"
 import { Hero } from "@/components/sections/Hero"
-import { Quiz } from "@/components/quiz/Quiz"
+import { ConversionFlow } from "@/components/quiz/ConversionFlow"
 import { Services } from "@/components/sections/Services"
 import { BeforeAfter } from "@/components/sections/BeforeAfter"
 import { Attendance } from "@/components/sections/Attendance"
@@ -28,7 +28,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Quiz />
+      <ConversionFlow />
       <Services />
       <BeforeAfter />
       <Attendance />
