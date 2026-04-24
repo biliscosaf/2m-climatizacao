@@ -6,6 +6,7 @@
 import { motion } from "framer-motion"
 import { MessageCircle } from "lucide-react"
 import { useEffect, useState } from "react"
+import { getWhatsAppUrl } from "@/config/whatsapp"
 
 const pulseVariants = {
   pulse: {
@@ -32,15 +33,11 @@ export function WhatsAppButton() {
     return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
-  // Número da empresa
-  const whatsappNumber = "5571999999999" // Substitua pelo número real
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços.`
-
   return (
     <>
       {/* Botão flutuante */}
       <motion.a
-        href={whatsappUrl}
+        href={getWhatsAppUrl()}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg transition-all hover:bg-emerald-600 hover:shadow-xl md:h-16 md:w-16"
@@ -55,15 +52,16 @@ export function WhatsAppButton() {
       {/* Label informativo (desktop) */}
       {!isMobile && (
         <motion.div
-          className="fixed bottom-24 right-6 z-40 rounded-lg bg-white px-4 py-2 shadow-lg"
+          className="fixed bottom-24 right-6 z-40 rounded-lg bg-white px-4 py-3 shadow-lg border border-emerald-200"
           initial={{ opacity: 0, x: 10 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <p className="whitespace-nowrap text-sm font-medium text-gray-900">
-            Fale conosco! 👋
+          <p className="whitespace-nowrap text-sm font-semibold text-gray-900">
+            💬 Fale conosco!
           </p>
-          <p className="text-xs text-gray-600">Responderemos em segundos</p>
+          <p className="text-xs text-gray-600">Orçamento grátis</p>
+          <p className="text-xs text-emerald-600 font-medium">Resposta rápida ✓</p>
         </motion.div>
       )}
     </>

@@ -19,7 +19,7 @@ export const SERVICES: Service[] = [
     description:
       "Instalação completa de splits e sistemas de ar-condicionado com garantia de serviço. " +
       "Atendemos todas as marcas e modelos.",
-    ctaLabel: "Solicitar instalação",
+    ctaLabel: "Solicitar orçamento",
     quizStep: "q1=instalacao",
   },
   {
@@ -29,7 +29,7 @@ export const SERVICES: Service[] = [
     description:
       "Limpeza preventiva de filtros e serpentinas para manter o ar puro e o aparelho funcionando " +
       "com eficiência máxima.",
-    ctaLabel: "Solicitar limpeza",
+    ctaLabel: "Solicitar orçamento",
     quizStep: "q1=cheiro-ruim",
   },
   {
@@ -39,7 +39,7 @@ export const SERVICES: Service[] = [
     description:
       "Revisão periódica completa para evitar falhas e prolongar a vida útil do seu equipamento. " +
       "Recomendada a cada 6 meses.",
-    ctaLabel: "Solicitar manutenção",
+    ctaLabel: "Solicitar orçamento",
     quizStep: "q1=manutencao",
   },
   {
@@ -49,17 +49,17 @@ export const SERVICES: Service[] = [
     description:
       "Atendimento urgente para equipamentos com defeito. Diagnóstico no local e solução " +
       "no mesmo dia sempre que possível.",
-    ctaLabel: "Solicitar reparo urgente",
+    ctaLabel: "Solicitar orçamento",
     quizStep: "q1=nao-resfria",
   },
   {
-    id: "recarga-gas",
+    id: "recargaGas",
     icon: "flame",
     title: "Recarga de Gás Refrigerante",
     description:
       "Recarga de fluido refrigerante (R-22, R-410A) com equipamentos calibrados e " +
       "materiais homologados.",
-    ctaLabel: "Solicitar recarga",
+    ctaLabel: "Solicitar orçamento",
     quizStep: "q1=nao-resfria",
   },
   {
@@ -69,7 +69,7 @@ export const SERVICES: Service[] = [
     description:
       "Limpeza com produtos bactericidas e fungicidas que eliminam fungos, bactérias e ácaros. " +
       "Ideal para alergias e doenças respiratórias.",
-    ctaLabel: "Solicitar higienização",
+    ctaLabel: "Solicitar orçamento",
     quizStep: "q1=cheiro-ruim",
   },
 ]

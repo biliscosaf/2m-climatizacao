@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
 import Image from "next/image"
+import { getWhatsAppUrl } from "@/config/whatsapp"
 
 const contentVariants = {
   hidden: { opacity: 0, x: -30 },
@@ -88,12 +89,14 @@ export function About() {
 
             {/* CTA */}
             <div className="pt-4">
-              <Button
-                size="lg"
-                className="rounded-full bg-orange-heat-500 px-8 py-4 text-white transition-colors hover:bg-orange-heat-600"
-              >
-                Solicitar orçamento grátis →
-              </Button>
+              <a href={getWhatsAppUrl()}>
+                <Button
+                  size="lg"
+                  className="rounded-full bg-emerald-500 px-8 py-4 text-white transition-colors hover:bg-emerald-600"
+                >
+                  💬 Solicitar orçamento grátis →
+                </Button>
+              </a>
             </div>
           </motion.div>
 
@@ -146,8 +149,7 @@ export function About() {
             </div>
             <div>
               <p className="text-4xl font-bold text-sky-600">4.9⭐</p>
-              <p className="mt-2 text-gray-700">Avaliação média</p>
-              <p className="mt-1 text-sm text-gray-600">baseada em 200+ avaliações</p>
+              <p className="mt-2 text-gray-700">Avaliação média dos clientes</p>
             </div>
           </div>
 

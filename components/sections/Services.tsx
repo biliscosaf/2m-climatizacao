@@ -6,10 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/componen
 import { Button } from "@/components/ui/button"
 import { SERVICES } from "@/content/services"
 import * as LucideIcons from "lucide-react"
+import { getWhatsAppUrl, getServiceMessage } from "@/config/whatsapp"
 
 export function Services() {
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section id="servicos" className="bg-white py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 2xl:px-12">
         {/* Cabeçalho da seção */}
         <div className="mb-12 text-center">
@@ -57,12 +58,17 @@ export function Services() {
 
                 {/* Footer com CTA */}
                 <CardFooter className="border-t border-gray-100 pt-4">
-                  <Button
-                    variant="link"
-                    className="w-full justify-start p-0 text-sky-600 hover:text-sky-700 hover:underline"
+                  <a
+                    href={getWhatsAppUrl(getServiceMessage(service.id))}
+                    className="w-full"
                   >
-                    {service.ctaLabel} →
-                  </Button>
+                    <Button
+                      variant="link"
+                      className="w-full justify-start p-0 text-sky-600 hover:text-sky-700 hover:underline"
+                    >
+                      {service.ctaLabel} →
+                    </Button>
+                  </a>
                 </CardFooter>
               </Card>
             )
@@ -77,12 +83,14 @@ export function Services() {
           <p className="mb-6 text-gray-700">
             Nosso técnico pode resolver a maioria dos problemas. Clique abaixo para conversar.
           </p>
-          <Button
-            size="lg"
-            className="rounded-full bg-orange-heat-500 px-8 py-3 text-white transition-colors hover:bg-orange-heat-600"
-          >
-            Converse com um especialista →
-          </Button>
+          <a href={getWhatsAppUrl()}>
+            <Button
+              size="lg"
+              className="rounded-full bg-emerald-500 px-8 py-3 text-white transition-colors hover:bg-emerald-600"
+            >
+              💬 Converse com um especialista →
+            </Button>
+          </a>
         </div>
       </div>
     </section>

@@ -9,6 +9,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { FAQ_ITEMS } from "@/content/faq"
+import { Button } from "@/components/ui/button"
+import { getWhatsAppUrl } from "@/config/whatsapp"
 
 export function FAQ() {
   return (
@@ -54,9 +56,14 @@ export function FAQ() {
           <p className="mt-2 text-gray-700">
             Entre em contato conosco via WhatsApp. Responderemos em poucos minutos.
           </p>
-          <button className="mt-4 inline-block rounded-full bg-orange-heat-500 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-heat-600">
-            Conversar no WhatsApp →
-          </button>
+          <a href={getWhatsAppUrl("Olá! Tenho uma dúvida que não está na FAQ. Pode me ajudar?")} className="mt-4 inline-block">
+            <Button
+              size="sm"
+              className="rounded-full bg-emerald-500 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-600"
+            >
+              💬 Conversar no WhatsApp →
+            </Button>
+          </a>
         </div>
       </div>
 

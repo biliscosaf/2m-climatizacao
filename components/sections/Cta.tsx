@@ -2,6 +2,7 @@
 // Server Component
 
 import { Button } from "@/components/ui/button"
+import { getWhatsAppUrl } from "@/config/whatsapp"
 
 export function Cta() {
   return (
@@ -13,23 +14,29 @@ export function Cta() {
           </h2>
 
           <p className="mt-4 text-lg text-orange-heat-100">
-            Nossas equipes estão prontas para atender em Salvador e região
+            Nossas equipes estão prontas para atender em Salvador e região. Orçamento grátis!
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-4">
-            <Button
-              size="lg"
-              className="rounded-full bg-white px-8 py-4 font-semibold text-orange-heat-600 transition-all hover:bg-orange-heat-50"
+            <button
+              onClick={() => document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Descobrir meu preço →
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full border-white px-8 py-4 font-semibold text-white hover:bg-orange-heat-600"
-            >
-              Conversar no WhatsApp
-            </Button>
+              <Button
+                size="lg"
+                className="w-full rounded-full bg-white px-8 py-4 font-semibold text-orange-heat-600 transition-all hover:bg-orange-heat-50 sm:w-auto"
+              >
+                Descobrir meu preço →
+              </Button>
+            </button>
+            <a href={getWhatsAppUrl()} className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full rounded-full border-white px-8 py-4 font-semibold text-white hover:bg-orange-heat-600 sm:w-auto"
+              >
+                💬 Conversar no WhatsApp
+              </Button>
+            </a>
           </div>
 
           <p className="mt-6 text-sm text-orange-heat-100">

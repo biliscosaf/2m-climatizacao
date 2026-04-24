@@ -1,21 +1,18 @@
 "use client"
 
-// Seção de depoimentos — 3+ cards com foto, nome, localização e stars
+// Seção "Por que escolher a 2M?" — 6 cards com benefícios reais
 // Client Component — usa Framer Motion para animações
-// ⚠️ PLACEHOLDER — depoimentos fictícios para desenvolvimento
 
 import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Star } from "lucide-react"
-import Image from "next/image"
-import { TESTIMONIALS } from "@/content/testimonials"
+import { Card, CardContent } from "@/components/ui/card"
+import { CheckCircle2, Zap, Shield, Users, Wrench, Clock } from "lucide-react"
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
     },
   },
 }
@@ -29,6 +26,45 @@ const itemVariants = {
   },
 }
 
+const benefits = [
+  {
+    id: "speed",
+    title: "Atendimento Rápido",
+    description: "Atendemos emergências em até 4 horas. Não deixamos você na mão quando mais precisa.",
+    icon: Clock,
+  },
+  {
+    id: "clean",
+    title: "Serviço Limpo",
+    description: "Técnicos profissionais que respeitam sua casa. Deixamos tudo limpo e organizado.",
+    icon: CheckCircle2,
+  },
+  {
+    id: "explain",
+    title: "Explicação Clara",
+    description: "Explicamos o problema antes de começar. Você entende exatamente o que está sendo feito.",
+    icon: Users,
+  },
+  {
+    id: "warranty",
+    title: "Garantia Completa",
+    description: "90 dias de garantia no serviço. Se houver problema, retornamos sem custo adicional.",
+    icon: Shield,
+  },
+  {
+    id: "fair",
+    title: "Preço Justo",
+    description: "Orçamento transparente. Sem surpresas ou cobranças escondidas.",
+    icon: Zap,
+  },
+  {
+    id: "certified",
+    title: "Técnicos Experientes",
+    description: "10+ anos de experiência. Equipe certificada e especializada em ar-condicionado.",
+    icon: Wrench,
+  },
+]
+
 export function Testimonials() {
   return (
     <section className="bg-white py-16 md:py-24">
@@ -36,26 +72,14 @@ export function Testimonials() {
         {/* Cabeçalho */}
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold text-gray-900 md:text-5xl">
-            O que nossos clientes dizem
+            Por que nossos clientes escolhem a 2M?
           </h2>
           <p className="mt-4 text-xl text-gray-600">
-            Confira os depoimentos de quem confiou na 2M Climatização
+            Mais de 500 clientes satisfeitos em Salvador confiam em nossa qualidade
           </p>
         </div>
 
-        {/* AVISO: DEPOIMENTOS PLACEHOLDER */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-4"
-        >
-          <p className="text-sm font-medium text-amber-900">
-            ⚠️ Em desenvolvimento: Estes depoimentos são fictícios e usados apenas para demonstração.
-            Serão substituídos por depoimentos reais de clientes antes do go-live.
-          </p>
-        </motion.div>
-
-        {/* Grid de cards — mobile-first */}
+        {/* Grid de benefícios — mobile-first */}
         <motion.div
           className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
           variants={containerVariants}
@@ -63,67 +87,29 @@ export function Testimonials() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {TESTIMONIALS.map((testimonial) => (
-            <motion.div key={testimonial.id} variants={itemVariants}>
-              <Card className="flex flex-col h-full border border-gray-100 rounded-xl shadow-md transition-all hover:shadow-lg hover:border-sky-500">
-                {/* Header com borda azul esquerda */}
-                <div className="border-l-4 border-sky-500 pl-4 pt-4">
-                  {/* Avatar + Nome + Localização */}
-                  <CardHeader className="p-0 pb-4">
+          {benefits.map((benefit) => {
+            const Icon = benefit.icon
+            return (
+              <motion.div key={benefit.id} variants={itemVariants}>
+                <Card className="flex flex-col h-full border border-gray-100 rounded-xl transition-all hover:shadow-lg hover:border-sky-500 overflow-hidden">
+                  {/* Header com ícone e borda azul */}
+                  <div className="border-l-4 border-sky-500 bg-sky-50 p-6">
                     <div className="flex items-center gap-4">
-                      {/* Avatar com imagem real */}
-                      <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full ring-2 ring-sky-500 ring-offset-2">
-                        <Image
-                          src={testimonial.avatar || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&q=80"}
-                          alt={testimonial.nome}
-                          fill
-                          className="object-cover"
-                        />
+                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-sky-500">
+                        <Icon className="h-6 w-6 text-white" />
                       </div>
-
-                      {/* Nome + Bairro */}
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-semibold text-gray-900 truncate">
-                          {testimonial.nome}
-                        </h4>
-                        <p className="text-sm text-gray-600">
-                          {testimonial.bairro} • {testimonial.servico}
-                        </p>
-                      </div>
+                      <h3 className="font-semibold text-gray-900">{benefit.title}</h3>
                     </div>
+                  </div>
 
-                    {/* Stars */}
-                    <div className="mt-3 flex gap-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`h-4 w-4 ${
-                            i < testimonial.rating
-                              ? "fill-orange-heat-500 text-orange-heat-500"
-                              : "text-gray-300"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </CardHeader>
-                </div>
-
-                {/* Corpo — texto do depoimento */}
-                <CardContent className="flex-1 pt-4">
-                  <p className="leading-relaxed text-gray-700 italic">
-                    "{testimonial.texto}"
-                  </p>
-                </CardContent>
-
-                {/* Footer — badge do serviço */}
-                <div className="border-t border-gray-100 p-4">
-                  <span className="inline-block rounded-full bg-sky-50 px-3 py-1 text-xs font-medium text-sky-700">
-                    {testimonial.servico}
-                  </span>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
+                  {/* Corpo — descrição */}
+                  <CardContent className="flex-1 p-6">
+                    <p className="leading-relaxed text-gray-700">{benefit.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            )
+          })}
         </motion.div>
 
         {/* Estatísticas de satisfação */}
@@ -137,15 +123,15 @@ export function Testimonials() {
           <div className="grid gap-6 text-center md:grid-cols-3">
             <div>
               <p className="text-4xl font-bold text-sky-600">500+</p>
-              <p className="mt-2 text-gray-700">Clientes satisfeitos</p>
+              <p className="mt-2 text-gray-700">Clientes satisfeitos em Salvador</p>
+            </div>
+            <div>
+              <p className="text-4xl font-bold text-sky-600">10+</p>
+              <p className="mt-2 text-gray-700">Anos de experiência</p>
             </div>
             <div>
               <p className="text-4xl font-bold text-sky-600">4.9⭐</p>
-              <p className="mt-2 text-gray-700">Avaliação média</p>
-            </div>
-            <div>
-              <p className="text-4xl font-bold text-sky-600">98%</p>
-              <p className="mt-2 text-gray-700">Taxa de recomendação</p>
+              <p className="mt-2 text-gray-700">Avaliação média dos clientes</p>
             </div>
           </div>
         </motion.div>

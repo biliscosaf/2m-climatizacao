@@ -3,6 +3,8 @@
 
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { getWhatsAppUrl } from "@/config/whatsapp"
+import { CheckCircle2 } from "lucide-react"
 
 export function Hero() {
   return (
@@ -16,35 +18,62 @@ export function Hero() {
           <div className="space-y-6">
             {/* H1 — principal */}
             <h1 className="text-5xl font-bold leading-tight text-gray-900 sm:text-6xl md:text-7xl">
-              Seu ar-condicionado com problema?
+              Instalação, Limpeza e Manutenção de Ar-Condicionado em Salvador
             </h1>
 
             {/* Subtítulo */}
             <p className="text-xl leading-relaxed text-gray-700 md:text-2xl">
-              Descubra o preço do seu serviço em <strong>5 perguntas rápidas</strong> e receba
-              uma estimativa personalizada para Salvador e região.
+              Atendimento rápido, serviço com garantia e orçamento direto pelo WhatsApp.
             </p>
 
-            {/* Microcopy de urgência */}
-            <p className="text-base font-medium text-orange-heat-600">
-              ✓ Orçamento grátis • ✓ Sem compromisso • ✓ Resposta rápida
-            </p>
+            {/* Selos de confiança */}
+            <div className="flex flex-col gap-3 pt-2">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-emerald-500" />
+                <span className="text-sm font-medium text-gray-700">Orçamento grátis</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-emerald-500" />
+                <span className="text-sm font-medium text-gray-700">Atendimento em Salvador e região</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-emerald-500" />
+                <span className="text-sm font-medium text-gray-700">Garantia no serviço</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-emerald-500" />
+                <span className="text-sm font-medium text-gray-700">Resposta rápida</span>
+              </div>
+            </div>
 
-            {/* CTA Principal — laranja */}
-            <div className="pt-4">
-              <Button
-                size="lg"
-                className="rounded-full bg-orange-heat-500 px-8 py-4 text-base font-semibold text-white transition-all hover:bg-orange-heat-600 active:scale-95"
+            {/* CTAs — WhatsApp principal + Ver serviços */}
+            <div className="flex flex-col gap-3 pt-6 sm:flex-row sm:gap-4">
+              <a href={getWhatsAppUrl()}>
+                <Button
+                  size="lg"
+                  className="w-full rounded-full bg-emerald-500 px-8 py-4 text-base font-semibold text-white transition-all hover:bg-emerald-600 active:scale-95 sm:w-auto"
+                >
+                  💬 Pedir orçamento no WhatsApp
+                </Button>
+              </a>
+              <button
+                onClick={() => document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Descobrir meu preço →
-              </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full rounded-full border-2 border-gray-300 px-8 py-4 text-base font-semibold text-gray-900 transition-all hover:border-sky-500 hover:bg-sky-50 sm:w-auto"
+                >
+                  Ver nossos serviços →
+                </Button>
+              </button>
             </div>
 
             {/* Social proof — badges */}
             <div className="flex flex-wrap gap-3 pt-4">
               <div className="inline-block rounded-full bg-gray-100 px-4 py-2">
                 <p className="text-sm font-medium text-gray-700">
-                  ⭐ Mais de 500 clientes satisfeitos
+                  ⭐ 500+ clientes satisfeitos
                 </p>
               </div>
               <div className="inline-block rounded-full bg-gray-100 px-4 py-2">
@@ -71,19 +100,19 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Seção responsiva mobile — apenas H1 + CTA */}
+        {/* Seção responsiva mobile — apenas imagem + microcopy */}
         <div className="lg:hidden">
           <div className="mt-8 flex flex-col items-center text-center">
-            <div className="relative h-40 w-40 overflow-hidden rounded-2xl">
+            <div className="relative h-48 w-full overflow-hidden rounded-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=300&h=300&fit=crop&q=80"
-                alt="Técnico em ação"
+                src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&h=300&fit=crop&q=80"
+                alt="Técnico realizando manutenção de ar-condicionado"
                 fill
                 className="object-cover"
               />
             </div>
-            <p className="mt-4 text-sm text-gray-600">
-              💡 Receba um orçamento personalizado em 2 minutos
+            <p className="mt-4 text-sm font-medium text-gray-600">
+              ✨ Especialistas prontos para atender em 4 horas
             </p>
           </div>
         </div>

@@ -3,6 +3,7 @@
 
 import { BusinessHoursBadge } from "@/components/shared/BusinessHoursBadge"
 import { Button } from "@/components/ui/button"
+import { getWhatsAppUrl } from "@/config/whatsapp"
 
 export function Header() {
   return (
@@ -28,12 +29,14 @@ export function Header() {
             </div>
 
             {/* CTA */}
-            <Button
-              size="sm"
-              className="rounded-full bg-orange-heat-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-heat-600 md:px-6"
-            >
-              Começar
-            </Button>
+            <a href={getWhatsAppUrl()}>
+              <Button
+                size="sm"
+                className="rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-600 md:px-6"
+              >
+                💬 Pedir orçamento
+              </Button>
+            </a>
           </div>
         </div>
       </div>

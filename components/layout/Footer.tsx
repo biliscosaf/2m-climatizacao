@@ -1,7 +1,9 @@
 // Footer — links, informações de contato, policy links
 // Server Component
 
-import { Mail, Phone, MapPin, Clock } from "lucide-react"
+import { MessageCircle, Phone, MapPin, Clock } from "lucide-react"
+import { getWhatsAppUrl } from "@/config/whatsapp"
+import { Button } from "@/components/ui/button"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -9,8 +11,27 @@ export function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16 2xl:px-12">
+        {/* CTA WhatsApp destaque */}
+        <div className="mb-12 rounded-2xl bg-emerald-600 p-8 text-center md:p-10">
+          <div className="flex justify-center gap-2 mb-4">
+            <MessageCircle className="h-6 w-6 text-white" />
+          </div>
+          <h3 className="mb-2 text-2xl font-bold text-white">Chamar no WhatsApp agora</h3>
+          <p className="mb-6 text-emerald-100">
+            Atendimento rápido. Orçamento grátis. Sem compromisso.
+          </p>
+          <a href={getWhatsAppUrl()}>
+            <Button
+              size="lg"
+              className="rounded-full bg-white px-8 py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50"
+            >
+              💬 Conversar agora
+            </Button>
+          </a>
+        </div>
+
         {/* Grid de conteúdo */}
-        <div className="grid gap-8 md:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-3">
           {/* Coluna 1 — Empresa */}
           <div>
             <div className="mb-4 flex items-center gap-2">
@@ -27,17 +48,17 @@ export function Footer() {
 
           {/* Coluna 2 — Contato */}
           <div>
-            <h4 className="mb-4 font-semibold text-white">Contato</h4>
+            <h4 className="mb-4 font-semibold text-white">Contato Principal</h4>
             <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-3">
+                <MessageCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-400" />
+                <a href={getWhatsAppUrl()} className="hover:text-white transition-colors">
+                  WhatsApp — Resposta rápida ✓
+                </a>
+              </li>
               <li className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-4 w-4 flex-shrink-0" />
                 <span>(71) 9 9999-9999</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="mt-0.5 h-4 w-4 flex-shrink-0" />
-                <a href="mailto:contato@2m.com.br" className="hover:text-white">
-                  contato@2m.com.br
-                </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0" />
@@ -46,10 +67,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Coluna 3 — Horário */}
+          {/* Coluna 3 — Horário + Links */}
           <div>
             <h4 className="mb-4 font-semibold text-white">Horário de Funcionamento</h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm mb-6">
               <li className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
                 <span>Seg-Sex: 8h às 18h</span>
@@ -63,14 +84,7 @@ export function Footer() {
                 <span>Domingo: Fechado</span>
               </li>
             </ul>
-            <p className="mt-3 text-xs text-gray-400">
-              Emergências: consulte via WhatsApp
-            </p>
-          </div>
-
-          {/* Coluna 4 — Links úteis */}
-          <div>
-            <h4 className="mb-4 font-semibold text-white">Links Úteis</h4>
+            <h4 className="mb-3 font-semibold text-white">Links Úteis</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="/#servicos" className="hover:text-white">
