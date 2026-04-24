@@ -62,6 +62,8 @@ export function Quiz() {
   // Se ainda não iniciou o quiz, mostrar CTA
   if (state.step === "idle") {
     return (
+      <section id="quiz" className="bg-white py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 2xl:px-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -91,6 +93,8 @@ export function Quiz() {
           </CardContent>
         </Card>
       </motion.div>
+        </div>
+      </section>
     )
   }
 
@@ -115,6 +119,8 @@ export function Quiz() {
   const ctaLabel = QUIZ_CTA_LABELS[state.currentQuestion]
 
   return (
+    <section id="quiz" className="bg-white py-16 md:py-24">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 2xl:px-12">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -261,5 +267,7 @@ export function Quiz() {
         </CardContent>
       </Card>
     </motion.div>
+      </div>
+    </section>
   )
 }

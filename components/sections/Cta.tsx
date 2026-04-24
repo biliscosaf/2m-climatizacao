@@ -18,16 +18,14 @@ export function Cta() {
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-4">
-            <button
-              onClick={() => document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' })}
-            >
+            <a href="#quiz" className="w-full sm:w-auto">
               <Button
                 size="lg"
                 className="w-full rounded-full bg-white px-8 py-4 font-semibold text-orange-heat-600 transition-all hover:bg-orange-heat-50 sm:w-auto"
               >
                 Descobrir meu preço →
               </Button>
-            </button>
+            </a>
             <a href={getWhatsAppUrl()} className="w-full sm:w-auto">
               <Button
                 size="lg"

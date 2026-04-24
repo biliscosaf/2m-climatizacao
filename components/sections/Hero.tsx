@@ -56,9 +56,7 @@ export function Hero() {
                   💬 Pedir orçamento no WhatsApp
                 </Button>
               </a>
-              <button
-                onClick={() => document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' })}
-              >
+              <a href="#servicos">
                 <Button
                   size="lg"
                   variant="outline"
@@ -66,7 +64,7 @@ export function Hero() {
                 >
                   Ver nossos serviços →
                 </Button>
-              </button>
+              </a>
             </div>
 
             {/* Social proof — badges */}
