@@ -8,6 +8,8 @@ import { Hero } from "@/components/sections/Hero"
 import { Quiz } from "@/components/quiz/Quiz"
 import { Services } from "@/components/sections/Services"
 import { BeforeAfter } from "@/components/sections/BeforeAfter"
+import { Attendance } from "@/components/sections/Attendance"
+import { AmbientResult } from "@/components/sections/AmbientResult"
 import { Testimonials } from "@/components/sections/Testimonials"
 import { About } from "@/components/sections/About"
 import { CoverageMap } from "@/components/sections/CoverageMap"
@@ -29,6 +31,8 @@ export default function HomePage() {
       <Quiz />
       <Services />
       <BeforeAfter />
+      <Attendance />
+      <AmbientResult />
       <Testimonials />
       <About />
       <CoverageMap />

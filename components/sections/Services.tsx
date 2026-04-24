@@ -1,12 +1,23 @@
-// Seção de serviços — 6 cards com ícones, preços e CTAs
+// Seção de serviços — 6 cards com imagens, preços e CTAs
 // Server Component — cards renderizados estaticamente
 // Mobile: 1 coluna • Tablet: 2 colunas • Desktop: 3 colunas
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 import { SERVICES } from "@/content/services"
 import * as LucideIcons from "lucide-react"
 import { getWhatsAppUrl, getServiceMessage } from "@/config/whatsapp"
+
+// Mapeamento de serviços para imagens
+const SERVICE_IMAGES: Record<string, string> = {
+  instalacao: "/images/servicos/tecnico-instalando.jpg",
+  limpeza: "/images/servicos/limpeza-capa.jpg",
+  manutencao: "/images/servicos/tecnico-abrindo-ar.jpg",
+  recargaGas: "/images/servicos/tecnico-recarregando.jpg",
+  conserto: "/images/servicos/tecnico-consertando.jpg",
+  diagnostico: "/images/servicos/diagnostico-ar.jpg",
+}
 
 export function Services() {
   return (
@@ -35,6 +46,20 @@ export function Services() {
                 key={service.id}
                 className="group flex flex-col overflow-hidden border border-gray-100 rounded-xl transition-all duration-300 hover:border-sky-500 hover:shadow-lg"
               >
+                {/* Imagem do serviço */}
+                <div className="relative h-48 w-full overflow-hidden bg-gray-100">
+                  <Image
+                    src={SERVICE_IMAGES[service.id] || "/images/servicos/placeholder.jpg"}
+                    alt={`${service.title} - Ar-condicionado em Salvador`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  {/* Overlay no hover */}
+                  <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/5" />
+                </div>
+
                 {/* Header com ícone */}
                 <CardHeader className="pb-4">
                   <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-sky-50 transition-colors group-hover:bg-sky-100">

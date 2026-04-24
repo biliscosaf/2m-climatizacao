@@ -86,14 +86,15 @@ export function Hero() {
           <div className="hidden lg:block">
             <div className="relative h-96 w-full overflow-hidden rounded-3xl shadow-lg">
               <Image
-                src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&h=400&fit=crop&q=80"
-                alt="Técnico realizando manutenção de ar-condicionado"
+                src="/images/hero/tecnico-instalando.jpg"
+                alt="Técnico instalando ar-condicionado em Salvador"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 hover:scale-105"
                 priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              {/* Overlay com gradiente */}
-              <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-transparent" />
+              {/* Overlay escuro leve para melhorar leitura — premium effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-black/5 via-transparent to-black/10" />
             </div>
           </div>
         </div>
@@ -101,13 +102,16 @@ export function Hero() {
         {/* Seção responsiva mobile — apenas imagem + microcopy */}
         <div className="lg:hidden">
           <div className="mt-8 flex flex-col items-center text-center">
-            <div className="relative h-48 w-full overflow-hidden rounded-2xl">
+            <div className="relative h-48 w-full overflow-hidden rounded-2xl shadow-md">
               <Image
-                src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&h=300&fit=crop&q=80"
-                alt="Técnico realizando manutenção de ar-condicionado"
+                src="/images/hero/tecnico-instalando.jpg"
+                alt="Técnico instalando ar-condicionado em Salvador"
                 fill
                 className="object-cover"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 600px"
               />
+              <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-black/10" />
             </div>
             <p className="mt-4 text-sm font-medium text-gray-600">
               ✨ Especialistas prontos para atender em 4 horas
